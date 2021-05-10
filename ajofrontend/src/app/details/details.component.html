@@ -1,0 +1,183 @@
+<ng-container *ngFor="let post of ajopost">
+    <div class="container" *ngIf="ajoId==post.ajo_id">
+                        <div class="row mt-4 justify-content-center mx-1">
+                        <div class="col-lg-5 bg-primary shadow rounded mx-auto mt-4 py-1 animate__animated animate__fadeIn justify-content-center">
+                        <h5 class="font-weight-bold pt-1">{{post.title}}</h5> 
+                        <small class="font-weight-bold txt"><i class="fas fa-wallet"></i> Thrift Wallet</small>
+                        <p class="font-weight-bold txt">₦{{post.ajowallet}}.00</p>
+                        <small class="font-weight-bold" [class]="post.status=='Ongoing'? 'text-success':post.status=='pending'?'text-danger':''">{{post.status.toUpperCase()}}</small><br>
+                        <button class="btn text-white font-weight-bold shadow btn-sm animate__animated animate__fadeIn mb-2" data-toggle="modal" data-target="#exampleModal" [class]="acceptedInvites.length+1==post.duration?'invisible':''">
+                        <span>Invite</span>
+                        <i class="bi bi-arrow-right"></i>
+                        </button>
+                        </div>
+                        <div class="col-lg-5  bg-primary shadow rounded mx-auto mt-4 pt-4 pb-3 animate__animated animate__fadeIn justify-content-center  bg-purple text-light">
+                        <p class="font-weight-bold"><i class="fas fa-list-alt"></i> {{post.type}}</p>
+                        <p class="font-weight-bold"><i class="fas fa-money-bill-wave-alt"></i> Amount: <span style="font-size:large;">₦{{post.amount}}</span> per {{post.type=='Daily'?'day':post.type=='Weekly' ? 'week': post.type=='Monthly'? 'month':''}}</p> 
+                        <p class="font-weight-bold"><i class="fas fa-clock"></i> Duration: {{post.duration}}{{post.type=='Daily'?'days':post.type=='Weekly' ? 'weeks': post.type=='Monthly'? 'months':''}}</p>
+                        <p class="font-weight-bold"><i class="fas fa-sort-numeric-up-alt"></i> No of Invites sent: {{post.invite}}</p> 
+
+                        <label class="font-weight-bold txt">Enter the Email</label>
+                                <input type="email" name='email'  [(ngModel)]="email"  class="form-control col-md-12 border-top-0 border-left-0 border-right-0 rounded-0 inpu font-italic txt" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  name="Amount" placeholder="ajopay@gmail.com">  
+                                <small></small>
+                                <br><br>
+                                <div *ngIf="" id="preloader"><div class="spinner-sm spinner-sm-1" id="status"></div></div>
+
+                                
+
+                                <p align='center'>
+
+                                    
+
+                                <button class="btn btn-dark" (click)="SendInvite()"  >Invite <i class="fa fa-envelope"></i></button>
+                                </p>
+                        </div>
+                        </div>
+
+
+
+
+                        
+                        <div class="row ">
+
+                            <div class="col ">
+                            
+                                <small class="font-weight-bold text-info"  [class]="post.status=='pending'?'visible':'invisible'"><i class="fa fa-exclamation-circle"></i> You can Debit all participants when they are {{post.duration}} in numbers. </small><br>
+                                <small class="font-weight-bold text-info"  [class]="post.status=='Ongoing'?'visible':'invisible'"><i class="fa fa-exclamation-circle"></i> The Debit Participant Button will be visible on the next payment date. </small> <br>
+                                <div id="accordion" class="mt-2 animate__animated animate__fadeIn">
+                                <div class="card">
+                                <div class="card-header bg-transparent border-0" id="headingOne">
+                                <h5 class="mb-0">
+                                <small class="font-weight-bold justify-content-center txt" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fa fa-infinity"></i> Invites Sent
+                                </small>
+                                </h5>
+                                </div>
+                                
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                <p *ngFor="let post of invites">
+                                <small class="font-weight-bold text-primary"  *ngIf="ajoId==post.ajo_id"><i class="fa fa-thumbs-up"></i> You've invited {{post.participate_name}} to your thrift <span><p class="float-right font-weight-bold" [class]="post.status=='Accepted'? 'text-success':post.status=='Rejected'?'text-danger':post.status=='pending'?'text-info':''"><span class="txt">Status:</span> {{post.status}}</p></span></small>
+                                </p>
+                                </div>
+
+
+                               
+
+                        </div>
+                        <div class="card">
+                            <div class="card-header bg-transparent border-0" id="headingTwo">
+                            <h5 class="mb-0">
+                            <small class="font-weight-bold justify-content-center txt" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <i class="fa fa-users"></i> Thrift Participants ({{acceptedInvites.length+1}})
+                            </small>
+                            </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                            <p class="font-weight-bold text-primary"><i class="fa fa-user"></i> You</p>
+                            <p *ngFor="let post of acceptedInvites">
+                            <small class="font-weight-bold text-primary"><i class="fa fa-user"></i> {{post.participate_name}}</small>
+                            </p>
+                            <div class="mt-2 text-center">
+                            <button class="btn btn-dark font-weight-bold shadow btn-sm animate__animated animate__fadeIn mb-2"   (click)="start()"  >
+                            <span>Debit Participants</span>
+                            <i class="fa fa-arrow-right"></i>
+                            </button>
+                            </div>
+                            </div>
+
+                            
+                        </div>
+                        <div class="card">
+                            <div class="card-header bg-transparent border-0" id="headingThree">
+                            <h5 class="mb-0">
+                            <small class="font-weight-bold justify-content-center txt" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <i class="fas fa-money-bill-wave-alt"></i> Payment Schedule
+                            </small>
+                            </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+                            <p>
+                             <small class="font-weight-bold text-primary"><i class="fa fa-user"></i> You </small><button class="btn text-light btn-dark btn-sm font-weight-bold float-right" [class]="post.status=='Ongoing'?'visible':'invisible'" (click)="payuser(userId)" >Pay</button>
+                            </p> 
+                            <p *ngFor="let posts of acceptedInvites">
+                            <small class="font-weight-bold text-primary"><i class="fa fa-user"></i> {{posts.participate_name}}</small><button class="btn text-light btn-dark btn-sm font-weight-bold float-right" [class]="post.status=='Ongoing'?'visible':'invisible'" (click)="pay(posts.invittee_id)"  >Pay</button>
+                            </p>
+                           
+                            </div>
+                            </div>
+                            </div>
+
+
+
+            
+                                <!-- </div>
+                        </div>
+
+        
+        </div>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ng-container *ngFor="let post of ajopost">
+<div class="container" *ngIf="ajoId==post.ajo_id">
+    <div class="row mt-4 justify-content-cente">
+                    <div class="col-lg-5 ml-5 shadow rounded bg-primary text-white p-5 mt-4 py-1 animate__animated animate__fadeIn justify-content-center">
+                    <h5 class="font-weight-bold pt-1">{{post.title}}</h5> 
+                    <small class="font-weight-bold txt"><i class="fas fa-wallet"></i> Thrift Wallet</small>
+                    <p class="font-weight-bold txt">₦{{post.ajowallet}}.00</p>
+                    <small class="font-weight-bold" [class]="post.status=='Ongoing'? 'text-primary':post.status=='Pending'?'text-danger':''">{{post.status.toUpperCase()}}</small><br>
+
+
+                    <label class="font-weight-bold txt">Enter the Email</label>
+                                <input type="email" name='email'  [(ngModel)]="email"  class="form-control col-md-12 border-top-0 border-left-0 border-right-0 rounded-0 inpu font-italic txt" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  name="Amount" placeholder="ajopay@gmail.com">  
+                                <small></small>
+                                <br><br>
+                                <div *ngIf="" id="preloader"><div class="spinner-sm spinner-sm-1" id="status"></div></div>
+
+                                
+
+                                <p align='center'>
+
+                                    
+
+                                <button class="btn btn-dark" (click)="SendInvite()"  >Invite <i class="fa fa-envelope"></i></button>
+                                </p>
+
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-5 bg-primary shadow rounded mx-auto mt-4 pt-4 pb-3 animate__animated animate__fadeIn justify-content-center  bg-purple text-light">
+                <p class="font-weight-bold"><i class="fa fa-list-alt"></i> {{post.type}}</p>
+                <p class="font-weight-bold"><i class="fa fa-money"></i> Amount: <span style="font-size:large;">₦{{post.amount}}</span> per {{post.type=='Daily'?'day':post.type=='Weekly' ? 'week': post.type=='Monthly'? 'month':''}}</p> 
+                <p class="font-weight-bold"><i class="fa fa-clock"></i> Duration: {{post.duration}}{{post.type=='Daily'?'days':post.type=='Weekly' ? 'weeks': post.type=='Monthly'? 'months':''}}</p>
+                <p class="font-weight-bold"><i class="fas fa-sort-numeric-up-alt"></i> No of Invites sent: {{post.invite}}</p> 
+                </div>
+</div>
+
+
+
+
+
+
+
+</ng-container>  -->

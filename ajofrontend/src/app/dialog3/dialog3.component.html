@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            
+            <p class="font-weight-bold"><span class="txt">Title:</span> {{title.toUpperCase()}}</p>
+<p class="font-weight-bold"><span class="txt">Description:</span> {{describ}}</p>
+<p class="font-weight-bold"><span class="txt">Type:</span> {{type}}</p>
+<p class="font-weight-bold"><span class="txt">Duration:</span> {{duration}}{{type=='Daily'?'days':type=='Weekly' ? 'weeks': type=='Monthly'? 'months':''}}</p>
+<p class="font-weight-bold"><span class="txt">Amount:</span>  ₦{{amount}}</p>
+
+<span><i class="fa fa-info-circle text-dark mr-1 "></i> Note that each member will recieve the sum of   <b>₦{{c}}</b> at the end of each <b>{{type=='Daily'?'days':type=='Weekly' ? 'weeks': type=='Monthly'? 'months':''}}</b></span><br><br>
+
+<div class="alert alert-dark" role="alert">
+    if you click the accept button you can't  end the ajo and you must make sure there is enough fund before you accept because you be able to accept
+  </div>
+
+  <div class="p-2 mx-auto">
+      <p align="center">
+      <button class="btn btn-primary mr-3" (click)="accept()">accept</button>
+      <button class="btn btn-danger" (click)="reject()">accept</button>
+      </p>
+  </div>
+
+
+    </div>
+</div>

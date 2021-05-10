@@ -1,0 +1,21 @@
+<section class="pb-5 mt-5">
+    <p align='center' class="font-weight-bold  txt">My Ajo Group</p><br><br>
+    <div class="container">
+        <!-- <i  style="font-size: 20px;" class="fa fa-trash"></i> -->
+    <div class="row">
+    <div class="col-md-6  text-white" *ngFor="let i = index; let post of ajopost" >
+    <div class="frontside animate__animated animate__fadeIn">
+    <div class="card bg border-0">
+    <div class="card-body bg bg-primary text-center d-iline">
+    <p class="font-weight-bold text-white txt">{{i+1}}</p><br>
+    <!-- <p><img class=" img-fluid" src="assets/img/card.png" alt="card image"></p> -->
+    <p class="card-title font-weight-bold text-white  ">{{post.title}}</p>
+    <a class="btn btn-sm font-weight-bold  text-white"  (click)='details(post.ajo_id)'>Details <i class="fa fa-arrow-right"></i></a> <br> <br>
+    <small class="font-weight-bold  text-white">Status:{{post.status}}</small>
+    </div>
+    </div><br>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>

@@ -1,0 +1,43 @@
+<!-- <section>
+    <div class="container">
+    <div class="row mt-5">
+    <div class="col bg-danger">
+<img  [src]="baseurl+image" alt="..." class="rounded-circle" style="width: 80px; height: 80px;"><br>
+<label class="btn ml-2 mt-1 btn-sm text-dark font-weight-bold">
+Choose  <input type="file"  (change)="onFileChanged($event)" >
+</label>
+<small class="font-weight-bold ml-1" type="submit" (click)="uploadFile()" >Upload</small>
+</div>
+</div>
+</div>
+</section> -->
+<!-- <div class="container">
+    <div class="row">
+    <div class="box col-6 ">
+        <div class="js--image-preview"><img  [src]="baseurl+image" alt="..." class="rounded-circle" style="width: 80px; height: 80px;"></div>
+        <div class="upload-options">
+        <label>
+            <input type="file" class="image-upload" (change)="onFileChanged($event)"/>
+            <small class="font-weight-bold ml-1" type="submit" (click)="uploadFile()" >Upload</small>
+        </label>
+        </div>
+    </div>
+    </div>
+</div> -->
+
+<div class="file-upload">
+    <button class="file-upload-btn" (click)="uploadFile()" type="button" >Add Image</button>
+  
+    <div class="image-upload-wrap">
+      <input class="file-upload-input" type='file'  (change)="onFileChanged($event)" />
+      <div class="drag-text">
+        <h3>Drag and drop a file or select add Image</h3>
+      </div>
+    </div>
+    <div class="file-upload-content">
+      <img class="file-upload-image" [src]="baseurl+image" alt="your image" />
+      <div class="image-title-wrap">
+        <button type="button"  class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+      </div>
+    </div>
+  </div>

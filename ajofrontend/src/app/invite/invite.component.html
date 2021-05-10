@@ -1,0 +1,27 @@
+<div *ngIf="suc" >
+    <app-loader></app-loader>
+    
+  </div>
+
+<div class="container">
+    <div class="row mt-5">
+    <div class="col">
+        <p class="font-weight-bold txt animate__animated animate__fadeIn">Ajo Invites from your friends</p>
+    <section class="shadow-lg p-5">
+    <div *ngFor="let post of invites">
+    <ul class="list-group-flush animate__animated animate__fadeIn" *ngIf="userId==post.invittee_id">
+    <li class="list-group-item">Your friend  <span class="text-primary">{{post.inviter_name}}</span>  wants you to join his ajo <span class="ml-2" [class]="post.status=='Accepted'? 'text-success':post.status=='Rejected'?'text-danger':post.status=='Pending'?'text-info':''">{{post.status}}</span> <a class="float-right text-primary font-weight-bold" > <i class="fa fa-info-circle text-primary mr-1 " data-toggle="modal" data-target="#exampleModal"  (click)="displaymodal(post.ajo_id)"></i><small>Details</small></a></li>
+    </ul>
+    </div>
+    </section>
+    </div>
+    </div>
+    </div>
+
+
+
+    
+
+    
+
+

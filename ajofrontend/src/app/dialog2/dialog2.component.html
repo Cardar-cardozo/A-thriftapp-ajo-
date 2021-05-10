@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row ">
+        <div class="col-12">
+
+            
+                <div *ngIf="suc" class="alert alert-dark bg-dark text-white" role="alert">
+                  Ajo Group <b>{{title}}</b>  Succesfully created   <a href="#" class="alert-link text-white">check the details here</a>.
+                  </div>
+
+                  <div *ngIf="suc1" class="alert alert-danger bg-dark text-white" role="alert">
+                    cant connect to the server on your data
+                  </div>
+            
+                <p class="font-weight-bold animate__animated animate__fadeIn"><i class="fas fa-plus fa-1x txt"></i> Create a thrfit and start to invite your friends</p> 
+                <div class="animate__animated animate__zoomIn">
+                <label class="font-weight-bold txt">Title</label>
+                <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 inpu font-italic txt" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  [(ngModel)]="title"  placeholder="Thrift title" >  
+                </div> <br>
+                
+                <div class="animate__animated animate__zoomIn">
+                <label class="font-weight-bold txt">Description</label>
+                <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 inpu font-italic txt" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="describe"  placeholder="Description" >   
+                </div> <br>
+                
+                <div class="animate__animated animate__zoomIn">
+                <label class="font-weight-bold txt">Amount</label>
+                <input type="number" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 inpu font-italic txt" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="amount"  placeholder="Amount Intend to be saved" >   
+                </div> <br>
+                
+                <div class="animate__animated animate__zoomIn">
+                <label class="font-weight-bold txt">Type</label>
+                <form [formGroup]="typeForm">
+                <select class="form-control" formControlName="typeControl" >
+                <option [value]="types" *ngFor="let types of thrifttypes" > {{types}}</option>
+                </select>
+                </form>
+                
+                </div> <br>
+                
+                <div class="animate__animated animate__zoomIn">
+                <label class="font-weight-bold txt">Duration<small class="font-weight-bold">:How Long?</small></label> 
+                <input type="number" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 inpu font-italic txt" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  [(ngModel)]="duration" placeholder="This determines the number of friends you can invite" > 
+                </div> <br>
+                <p class="font-weight-bold txt" *ngIf="duration>0" ><i class="fa fa-info-circle"></i> You can only Invite <span class="text-danger"></span>{{duration-1}}  friends</p>
+                
+                
+                <div  class="text-center">
+                    
+                    </div> <br>
+                <div class="text-center animate__animated animate__fadeIn">
+                    <div *ngIf="load" id="preloader"><div class="spinner-sm spinner-sm-1" id="status"></div></div>
+                <button [disabled] = 'dis' class="btn  btn-dark font-weight-bold shadow"  (click)="createThrift()"  >
+                <span>CREATE GROUP</span>
+                <i class="fa fa-arrow-right"></i>
+                </button>
+                </div>
+        </div>
+
+    </div>
+</div>

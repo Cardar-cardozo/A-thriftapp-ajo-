@@ -1,0 +1,17 @@
+.bg{
+    background: rgb(154,21,131);
+    background: linear-gradient(90deg, rgba(154,21,131,0.9867297260701156) 0%, rgba(175,105,190,1) 58%, rgba(164,144,202,1) 100%);
+    border-radius: 10px;
+  }
+  
+  .bg2{
+    background: rgb(21,136,154);
+  background: linear-gradient(90deg, rgba(21,136,154,0.9867297260701156) 0%, rgba(120,105,190,1) 58%, rgba(115,15,168,1) 100%);
+  border-radius: 10px;
+  }
+  
+  .bg3{
+    background: rgb(154,21,131);
+    background: linear-gradient(90deg, rgba(154,21,131,0.9867297260701156) 0%, rgba(175,105,190,1) 58%, rgba(164,144,202,1) 100%);
+    border-radius: 10px;
+  }

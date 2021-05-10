@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            
+            <div class="animate__animated animate__zoomIn">
+                <div *ngIf="suc" class="alert alert-dark bg-dark text-white" role="alert">
+                     <b> &#8358; {{amounts}}</b>  Succesfully deposited.
+                    </div>
+
+                    <div *ngIf="suc1" class="alert alert-danger bg-dark text-white" role="alert">
+                         cant connect to the server on your data
+                       </div>
+                <label class="font-weight-bold txt">Amount To Deposit</label>
+                <input type="number" [(ngModel)]="amounts" #values (keyup)="checkvalue(values.value)" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 inpu font-italic txt" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  name="Amount" placeholder="Card Number">  
+                <small>cant deposit less than 1000</small>
+                <br><br>
+                <div *ngIf="load" id="preloader"><div class="spinner-sm spinner-sm-1" id="status"></div></div><br><br>
+
+                
+
+                <p align='center'>
+
+                    
+
+                <button class="btn btn-dark" (click)="fundwallet()" [disabled]='amount'>DEPOSIT <i class="fa fa-download"></i></button>
+                </p>
+        </div>
+    </div>
+</div>
